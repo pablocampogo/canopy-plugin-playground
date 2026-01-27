@@ -24,20 +24,27 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Create virtual environment and install dependencies
+        working-directory: plugin/python
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -e .
+
       - name: Create distribution tarball
         working-directory: plugin/python
         run: |
           mkdir -p release
-          # Create tarball with source code and dependencies
+          # Create tarball with source code, dependencies, and venv
           tar --exclude='*.pyc' \
             --exclude='__pycache__' \
-            --exclude='.venv' \
             -czf release/python-plugin.tar.gz \
             main.py \
             contract/ \
             pyproject.toml \
             pluginctl.sh \
-            Makefile
+            Makefile \
+            .venv/
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
@@ -48,16 +55,14 @@ jobs:
             Python Plugin Release ${{ github.event.inputs.tag }}
             
             ## Requirements
-            - Python 3.9 or later
+            - Python 3.12 or later
             
             ## Installation
             1. Extract `python-plugin.tar.gz` to `plugin/python/`
-            2. Create virtual environment: `python3 -m venv .venv`
-            3. Install dependencies: `.venv/bin/pip install -e .`
-            4. The plugin is ready to run
+            2. The plugin is ready to run (venv included)
             
             ## Assets
-            - `python-plugin.tar.gz` - Source code with pyproject.toml
+            - `python-plugin.tar.gz` - Source code with venv and dependencies
           files: |
             plugin/python/release/python-plugin.tar.gz
         env:

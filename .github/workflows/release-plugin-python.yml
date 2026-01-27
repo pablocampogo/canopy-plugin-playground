@@ -29,15 +29,15 @@ jobs:
         run: |
           mkdir -p release
           # Create tarball with source code and dependencies
-          tar -czf release/python-plugin.tar.gz \
+          tar --exclude='*.pyc' \
+            --exclude='__pycache__' \
+            --exclude='.venv' \
+            -czf release/python-plugin.tar.gz \
             main.py \
             contract/ \
             pyproject.toml \
             pluginctl.sh \
-            Makefile \
-            --exclude='*.pyc' \
-            --exclude='__pycache__' \
-            --exclude='.venv'
+            Makefile
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2

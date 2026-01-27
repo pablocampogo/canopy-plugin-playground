@@ -32,12 +32,18 @@ jobs:
         working-directory: plugin/typescript
         run: npm run build:all
 
+      - name: Install production dependencies only
+        working-directory: plugin/typescript
+        run: |
+          rm -rf node_modules
+          npm ci --production
+
       - name: Create distribution tarball
         working-directory: plugin/typescript
         run: |
           mkdir -p release
-          # Create tarball with dist/, package.json, and pluginctl.sh
-          tar -czf release/typescript-plugin.tar.gz dist/ package.json package-lock.json pluginctl.sh
+          # Create tarball with dist/, node_modules, and pluginctl.sh
+          tar -czf release/typescript-plugin.tar.gz dist/ node_modules/ pluginctl.sh
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2

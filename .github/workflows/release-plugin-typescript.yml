@@ -42,8 +42,8 @@ jobs:
         working-directory: plugin/typescript
         run: |
           mkdir -p release
-          # Create tarball with dist/, node_modules, and pluginctl.sh
-          tar -czf release/typescript-plugin.tar.gz dist/ node_modules/ pluginctl.sh
+          # Create tarball with dist/, node_modules, package.json (for "type": "module"), and pluginctl.sh
+          tar -czf release/typescript-plugin.tar.gz dist/ node_modules/ package.json pluginctl.sh
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
@@ -55,8 +55,7 @@ jobs:
             
             ## Installation
             1. Extract `typescript-plugin.tar.gz` to `plugin/typescript/`
-            2. Run `npm ci --production` to install runtime dependencies
-            3. The plugin is ready to run
+            2. The plugin is ready to run (node_modules included)
             
             ## Assets
             - `typescript-plugin.tar.gz` - Compiled plugin with dependencies

@@ -29,13 +29,14 @@ jobs:
         run: |
           mkdir -p release
           # Create tarball with source code (venv is created on first run by pluginctl.sh)
+          # Note: pluginctl.sh is NOT included - it's copied separately by Dockerfile
+          # and we don't want old releases to overwrite newer pluginctl.sh versions
           tar --exclude='*.pyc' \
             --exclude='__pycache__' \
             -czf release/python-plugin.tar.gz \
             main.py \
             contract/ \
             pyproject.toml \
-            pluginctl.sh \
             Makefile
 
       - name: Create GitHub release

@@ -42,8 +42,10 @@ jobs:
         working-directory: plugin/typescript
         run: |
           mkdir -p release
-          # Create tarball with dist/, node_modules, package.json (for "type": "module"), and pluginctl.sh
-          tar -czf release/typescript-plugin.tar.gz dist/ node_modules/ package.json pluginctl.sh
+          # Create tarball with dist/, node_modules, package.json (for "type": "module")
+          # Note: pluginctl.sh is NOT included - it's copied separately by Dockerfile
+          # and we don't want old releases to overwrite newer pluginctl.sh versions
+          tar -czf release/typescript-plugin.tar.gz dist/ node_modules/ package.json
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2

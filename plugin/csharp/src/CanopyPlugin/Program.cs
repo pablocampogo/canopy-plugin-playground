@@ -6,11 +6,13 @@ namespace CanopyPlugin
 {
     public class Program
     {
+        private const string PlaygroundVersion = "v0.1.0";
+
         public static async Task Main(string[] args)
         {
-            var config = Config.Default();
+            Console.WriteLine($"Canopy Plugin Playground {PlaygroundVersion} (C#)");
 
-            Console.WriteLine("Starting Canopy Plugin");
+            var config = Config.Default();
             Console.WriteLine($"  Chain ID: {config.ChainId}");
             Console.WriteLine($"  Data Directory: {config.DataDirPath}");
 

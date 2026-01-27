@@ -5,12 +5,14 @@ import java.util.concurrent.CountDownLatch
 
 private val logger = KotlinLogging.logger {}
 
+private const val PLAYGROUND_VERSION = "v0.1.0"
+
 /**
  * Main entry point for the Canopy Plugin
  * Matches Go implementation simplicity
  */
 fun main() {
-    logger.info { "Starting Canopy Plugin" }
+    logger.info { "Canopy Plugin Playground $PLAYGROUND_VERSION (Kotlin)" }
 
     // Start the plugin with default config
     val config = Config.default()

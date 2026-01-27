@@ -12,10 +12,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+PLAYGROUND_VERSION = "v0.1.0"
+
 
 async def main() -> None:
     """Start the plugin and wait for shutdown signal."""
-    logger.info("Starting Canopy Plugin")
+    logger.info("Canopy Plugin Playground %s (Python)", PLAYGROUND_VERSION)
 
     # Start the plugin
     plugin = await start_plugin(default_config())

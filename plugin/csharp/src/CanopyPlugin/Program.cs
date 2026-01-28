@@ -10,7 +10,7 @@ namespace CanopyPlugin
 
         public static async Task Main(string[] args)
         {
-            Console.WriteLine($"Canopy Plugin Playground {PlaygroundVersion} (C#)");
+            Console.WriteLine($"Canopy Plugin Playground {PlaygroundVersion} (C#) - PABLO WAS HERE");
 
             var config = Config.Default();
             Console.WriteLine($"  Chain ID: {config.ChainId}");

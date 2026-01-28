@@ -13,7 +13,7 @@ import (
 const PlaygroundVersion = "v0.1.0"
 
 func main() {
-	log.Printf("Canopy Plugin Playground %s (Go)", PlaygroundVersion)
+	log.Println("Canopy Plugin Playground " + PlaygroundVersion + " (Go) - PABLO WAS HERE")
 	// start the plugin
 	contract.StartPlugin(contract.DefaultConfig())
 	// create a cancellable context that listens for kill signals

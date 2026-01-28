@@ -17,7 +17,7 @@ PLAYGROUND_VERSION = "v0.1.0"
 
 async def main() -> None:
     """Start the plugin and wait for shutdown signal."""
-    logger.info("Canopy Plugin Playground %s (Python)", PLAYGROUND_VERSION)
+    logger.info("Canopy Plugin Playground %s (Python) - PABLO WAS HERE", PLAYGROUND_VERSION)
 
     # Start the plugin
     plugin = await start_plugin(default_config())

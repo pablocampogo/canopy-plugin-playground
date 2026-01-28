@@ -12,7 +12,7 @@ private const val PLAYGROUND_VERSION = "v0.1.0"
  * Matches Go implementation simplicity
  */
 fun main() {
-    logger.info { "Canopy Plugin Playground $PLAYGROUND_VERSION (Kotlin)" }
+    logger.info { "Canopy Plugin Playground $PLAYGROUND_VERSION (Kotlin) - PABLO WAS HERE" }
 
     // Start the plugin with default config
     val config = Config.default()

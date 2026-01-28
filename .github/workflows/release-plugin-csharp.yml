@@ -32,10 +32,10 @@ jobs:
         working-directory: plugin/csharp
         run: |
           mkdir -p release
-          # Linux x64 - publish main project only with all dependencies
-          dotnet publish CanopyPlugin.csproj -c Release -r linux-x64 --self-contained true -o release/linux-x64
-          # Linux ARM64 - publish main project only with all dependencies
-          dotnet publish CanopyPlugin.csproj -c Release -r linux-arm64 --self-contained true -o release/linux-arm64
+          # Linux musl x64 (Alpine) - publish main project only with all dependencies
+          dotnet publish CanopyPlugin.csproj -c Release -r linux-musl-x64 --self-contained true -o release/linux-x64
+          # Linux musl ARM64 (Alpine) - publish main project only with all dependencies
+          dotnet publish CanopyPlugin.csproj -c Release -r linux-musl-arm64 --self-contained true -o release/linux-arm64
 
       - name: Create tarballs
         working-directory: plugin/csharp
@@ -64,3 +64,4 @@ jobs:
             plugin/csharp/release/csharp-plugin-linux-arm64.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
